@@ -1383,12 +1383,6 @@ bool Mute(gentity_t *ent, Arguments argv)
 
 bool Noclip(gentity_t *ent, Arguments argv)
 {
-	if (level.noNoclip)
-	{
-		ChatPrintTo(ent, "^3noclip: ^7noclip is disabled on this map.");
-		return false;
-	}
-
 	if (argv->size() == 1)
 	{
 		if (!ent)

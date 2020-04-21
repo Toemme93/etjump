@@ -192,3 +192,5 @@ src/enc_temp_folder
 *.db-shm
 *.db-wal
 *.TMP
+/.vs
+/src

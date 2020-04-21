@@ -1024,11 +1024,6 @@ namespace ETJump
 
 		if (!g_cheats.integer || g_dedicated.integer > 0)
 		{
-			if (level.noNoclip)
-			{
-				return{ false, "^3%s ^7has been disabled on this map.\n" };
-			}
-
 			if (ent->client->pers.noclipCount == 0 &&
 				!ent->client->noclip)
 			{
@@ -4502,12 +4497,6 @@ void Cmd_Goto_f(gentity_t *ent)
 		return;
 	}
 
-	if (level.noGoto)
-	{
-		CP("print \"Goto is disabled on this map.\n\"");
-		return;
-	}
-
 	if (!ent->client->sess.gotoAllowed)
 	{
 		CP("print \"You are not allowed to use goto.\n\"");
@@ -4587,12 +4576,6 @@ void Cmd_Call_f(gentity_t *ent)
 	if (!g_goto.integer)
 	{
 		CP("print \"Call is disabled on this server.\n\"");
-		return;
-	}
-
-	if (level.noGoto)
-	{
-		CP("print \"Call is disabled on this map.\n\"");
 		return;
 	}
 

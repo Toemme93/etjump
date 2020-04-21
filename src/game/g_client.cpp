@@ -783,10 +783,7 @@ static void AddExtraSpawnAmmo(gclient_t *client, weapon_t weaponNum)
 	    break;*/
 	case WP_MEDIC_SYRINGE:
 	case WP_MEDIC_ADRENALINE:
-		if (client->sess.skill[SK_FIRST_AID] >= 2)
-		{
-			client->ps.ammoclip[BG_FindAmmoForWeapon(weaponNum)] += 2;
-		}
+			client->ps.ammoclip[BG_FindAmmoForWeapon(weaponNum)] += GetAmmoTableData(weaponNum)->maxclip;
 		break;
 	case WP_GARAND:
 	case WP_K43:
@@ -856,6 +853,9 @@ void SetWolfSpawnWeapons(gclient_t *client)
 	client->ps.weapons[1] = 0;
 
 	AddWeaponToPlayer(client, WP_KNIFE, 1, 0, qtrue);
+
+	// All players get adrenalin - this is a TJ-Mod isn't it?
+	AddWeaponToPlayer(client, WP_MEDIC_ADRENALINE, GetAmmoTableData(WP_MEDIC_ADRENALINE)->defaultStartingAmmo, GetAmmoTableData(WP_MEDIC_ADRENALINE)->defaultStartingClip, qtrue);
 
 	// Feen: PSM -TEST
 	if ((g_portalMode.integer == 0) && (level.portalEnabled) && !client->sess.timerunActive) //Freestyle mode...
@@ -993,11 +993,7 @@ void SetWolfSpawnWeapons(gclient_t *client)
 			else if (pc == PC_MEDIC)
 			{
 				AddWeaponToPlayer(client, WP_MEDIC_SYRINGE, GetAmmoTableData(WP_MEDIC_SYRINGE)->defaultStartingAmmo, GetAmmoTableData(WP_MEDIC_SYRINGE)->defaultStartingClip, qfalse);
-				if (client->sess.skill[SK_FIRST_AID] >= 4)
-				{
-					AddWeaponToPlayer(client, WP_MEDIC_ADRENALINE, GetAmmoTableData(WP_MEDIC_ADRENALINE)->defaultStartingAmmo, GetAmmoTableData(WP_MEDIC_ADRENALINE)->defaultStartingClip, qfalse);
-				}
-
+				
 				AddWeaponToPlayer(client, WP_MEDKIT, GetAmmoTableData(WP_MEDKIT)->defaultStartingAmmo, GetAmmoTableData(WP_MEDKIT)->defaultStartingClip, qfalse);
 
 				if (client->sess.sessionTeam == TEAM_AXIS)
@@ -1303,11 +1299,6 @@ void SetWolfSpawnWeapons(gclient_t *client)
 			if (pc == PC_MEDIC)
 			{
 				AddWeaponToPlayer(client, WP_MEDIC_SYRINGE, 0, 20, qfalse);
-				if (client->sess.skill[SK_FIRST_AID] >= 4)
-				{
-					AddWeaponToPlayer(client, WP_MEDIC_ADRENALINE, 0, 10, qfalse);
-				}
-
 			}
 			// End Knifeonly stuff -- Ensure that medics get their basic stuff
 		}
