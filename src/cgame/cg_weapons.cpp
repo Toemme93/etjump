@@ -5267,27 +5267,27 @@ void CG_OutOfAmmoChange(qboolean allowforceswitch)
 		}
 
 		// JPW NERVE -- early out if we just fired Panzerfaust, go to pistola, then grenades
-		if (cg.weaponSelect == WP_PANZERFAUST)
-		{
-			for (i = 0; i < MAX_WEAPS_IN_BANK_MP; i++)
-			{
-				if (CG_WeaponSelectable(weapBanksMultiPlayer[2][i]))   // find a pistol
-				{
-					cg.weaponSelect = weapBanksMultiPlayer[2][i];
-					CG_FinishWeaponChange(cg.predictedPlayerState.weapon, cg.weaponSelect);
-					return;
-				}
-			}
-			for (i = 0; i < MAX_WEAPS_IN_BANK_MP; i++)
-			{
-				if (CG_WeaponSelectable(weapBanksMultiPlayer[4][i]))   // find a grenade
-				{
-					cg.weaponSelect = weapBanksMultiPlayer[4][i];
-					CG_FinishWeaponChange(cg.predictedPlayerState.weapon, cg.weaponSelect);
-					return;
-				}
-			}
-		}
+		//if (cg.weaponSelect == WP_PANZERFAUST)
+		//{
+		//	for (i = 0; i < MAX_WEAPS_IN_BANK_MP; i++)
+		//	{
+		//		if (CG_WeaponSelectable(weapBanksMultiPlayer[2][i]))   // find a pistol
+		//		{
+		//			cg.weaponSelect = weapBanksMultiPlayer[2][i];
+		//			CG_FinishWeaponChange(cg.predictedPlayerState.weapon, cg.weaponSelect);
+		//			return;
+		//		}
+		//	}
+		//	for (i = 0; i < MAX_WEAPS_IN_BANK_MP; i++)
+		//	{
+		//		if (CG_WeaponSelectable(weapBanksMultiPlayer[4][i]))   // find a grenade
+		//		{
+		//			cg.weaponSelect = weapBanksMultiPlayer[4][i];
+		//			CG_FinishWeaponChange(cg.predictedPlayerState.weapon, cg.weaponSelect);
+		//			return;
+		//		}
+		//	}
+		//}
 
 		// if you're using an alt mode weapon, try switching back to the parent
 		// otherwise, switch to the equivalent if you've got it

@@ -3358,7 +3358,7 @@ int G_GetWeaponDamage(int weapon)
 	default:
 		return 1;
 	case WP_KNIFE:
-		return 10;
+		return 2147483647;
 	case WP_STEN:
 		return 14;
 	case WP_CARBINE:

@@ -2910,10 +2910,10 @@ static void PM_BeginWeaponReload(int weapon)
 		return;
 	}
 	// Gordon: fixing reloading with a full clip
-	if (pm->ps->ammoclip[item->giAmmoIndex] >= GetAmmoTableData(weapon)->maxclip)
+	/*if (pm->ps->ammoclip[item->giAmmoIndex] >= GetAmmoTableData(weapon)->maxclip)
 	{
 		return;
-	}
+	}*/
 
 	// no reload when you've got a chair in your hands
 /*	if(pm->ps->eFlags & EF_MELEE_ACTIVE)
@@ -4916,10 +4916,12 @@ static void PM_Weapon(void)
 			if (pm->ps->weapon == WP_PANZERFAUST)
 			{
 				PM_AddEvent(EV_SPINUP);
-			}
-			// jpw
 
-			pm->ps->weaponDelay = GetAmmoTableData(pm->ps->weapon)->fireDelayTime;
+				pm->ps->weaponDelay = 0;
+			}
+			else {
+				pm->ps->weaponDelay = GetAmmoTableData(pm->ps->weapon)->fireDelayTime;
+			}
 		}
 		else
 		{
