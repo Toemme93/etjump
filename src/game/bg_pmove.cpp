@@ -3476,7 +3476,7 @@ static void PM_ReloadClip(int weapon)
 
 	if (ammomove)
 	{
-		pm->ps->ammo[BG_FindAmmoForWeapon(static_cast<weapon_t>(weapon))]     -= ammomove;
+		//pm->ps->ammo[BG_FindAmmoForWeapon(static_cast<weapon_t>(weapon))]     -= ammomove;
 		pm->ps->ammoclip[BG_FindClipForWeapon(static_cast<weapon_t>(weapon))] += ammomove;
 	}
 
